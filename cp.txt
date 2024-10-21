@@ -1,0 +1,204 @@
+** INICIALIZANDO PROYECTO
+-------------------------
+
+P:
+
+@workspace /new crea un proyecto java maven basico con un paquete miPrincipal
+
+** PROBAR PROYECTO INICIAL
+--------------------------
+C:
+
+mvn compile
+mvn test
+
+** CORREGIR FALLA EN mvn test
+-----------------------------
+
+* En terminal:
+
+/clear     <-- Lumpiar dialogo
+
+P:
+
+@workspace arregla el error "package org.junit.jupiter.api does not exist" en #file:pom.xml
+
+* Incluir el cambio sugerido en el archivo pom.xml
+
+P:
+
+@workspace arregla el error "Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.8.1:testCompile (default-testCompile) on project mi-proyecto: Compilation failure: Compilation failure: " en #file:pom.xml
+
+* Incluir el cambio sugerido en el archivo pom.xml
+
+** CONTEXTUALIZANDO LAS PRUEBAS DE CALCULADORA
+----------------------------------------------
+
+Agregar en AppTest.java en la parte superior (Meta general de este programa)
+
+// Pruebas unitarias para una clase Calculadora que se encuentra en el paquete miPrincipal
+// Calcualadora.java realiza operaciones aritméticas básicas
+
+
+** TDD: CREAR PRUEBA UNITARIA PARA SUMAR, RESTAR, MULTIPLICAR, DIVIDR
+---------------------------------------------------------------------
+
+En AppTest teclear:
+
+P:
+
+// Crea una prueba unitaria para un metodo sumar en la clase Calculadora
+// Ejemplo : c.sumar(2, 3) debe devolver 5
+// Ejemplo : c.sumar(2, -3) debe devolver -1
+// Ejemplo : c.sumar(0, 0) debe devolver 0
+
+** Se genera el código para la prueba unitaria
+
+- Correr la prueba y debe fallar:
+
+mvn test
+
+Agregar miPrincipal.Calculadora.java y contextualizar con:
+
+// Calculadora aritmetica básica que suma, resta, multiplica y divide dos números double
+
+** Si GitHub Copilot genera código aceptable, aceptar.
+
+Probar que todo compile y ejecute bien:
+
+mvn clean
+mvn compile
+mvn test
+
+
+En AppTest teclear:
+
+P:
+
+// Crea una prueba unitaria para un metodo restar en la clase Calculadora
+// Ejemplo : c.restar(2, 3) debe devolver -1    
+// Ejemplo : c.restar(2, -3) debe devolver 5    
+// Ejemplo : c.restar(0, 0) debe devolver 0
+
+
+** Se genera el código para la prueba unitaria. Si no se genera el código presiona Ctr+Enter y revisar sugerencias de código. Aceptar la más aceptable.
+
+Probarlas:
+
+mvn clean
+mvn test
+
+* En caso de que se genera una prueba para división entre 0, eliminarla y generar el código en Calculadora.dividir para manejar le excepcion.
+
+P:
+
+// Crea una prueba unitaria para un metodo dividir en la clase Calculadora  que genera la excepcion IllegalArgumentException
+// Ejemplo : c.dividir(6, 0) debe lanzar una excepcion IllegalArgumentException 
+
+** REFACTORIZACION
+------------------
+
+Para refactorizar AppTest de tal manera que el objeto Calculadora se cree una sola vez:
+
+1) Selecciona todos los métodos de AppTest (contexto)
+2) Ctrl+i
+
+P:
+
+Refactoriza para crear el objeto Calculadora solo 1 vez
+
+* Probar que funciona:
+
+mvn clean
+mvn test
+
+
+** EJECUTANDO EL PROYECTO CON MAVEN
+-----------------------------------
+
+Por default el proyecto no se puede ejecutar con Maven, para ello es necesario extender pom.xml
+
+Abrir el archivo pom.xml en la IDE (contexto)
+
+P:
+
+@workspace como puedo modificar #file:pom.xml para poder ejecutar el proyecto con un comando maven?
+
+Revisar propuesta de modificación y aceptar el cambio
+
+El comando siguiente ejecuta el proyecto sin enviar mensaje mvn:
+
+mvn -q exec:java
+
+** CREAR EL PROGRAMA DEMO DE LA CALCULADORA
+-------------------------------------------
+
+(Contexto): Abre en la IDE los archivos App.java y Calculadora.java
+
+* Agrega el contexto general en App.java:
+
+// Programa principal para mostrar como funciona la Calcualador aritmetica
+
+
+* Dentro de método main:
+
+P:
+// Crear un objeto de la clase Calculadora
+
+...
+
+P:
+// Realizar operaciones aritmeticas
+
+* Se genera el código para probar la calculadora.
+
+Probar con:
+
+mvn compile
+mvn -q exec:java
+
+** REFACTORIZANDO PROGRAMA PRINCIPAL
+------------------------------------
+
+Seleccionar código a refactorizar en App.java
+
+Solicitar refactorización en Smart Action o Foco "Extract method"
+
+
+** DOCUMENTACION
+----------------
+
+(Contexto): Abrir Calculadora.java en IDE
+
+(Contexto): Colocar cursor en la parte superior Ctrl+I
+
+P:
+
+/doc en un máximo de 2 líneas #file:Calculadora.java
+
+(Contexto): Seleccionar cada método de la calculadora Ctrl+I
+
+P:
+/doc el método sumar incluyendo intención, entradas y salidas Ctrl+I
+
+...
+
+(Contexto: Seleccionar método dividir
+P:
+
+/doc el método dividir incluyendo intención, entradas, salidas y excepciones
+
+* DIAGRAMA DE CLASES
+--------------------
+(Contexto): archivo README.md. Colocar cursor en lugar adecuado.
+
+P:
+Agrega el Diagrama de clases Mermaid de este proyecto en #file:README.md
+
+*DIAGRAMA DE SECUENCIA
+----------------------
+(Contexto): archivo README.md. Colocar cursor en lugar adecuado.
+
+P:
+Agrega el Diagrama de secuencia Mermaid de este proyecto en #file:README.md
+
