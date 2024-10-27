@@ -54,4 +54,14 @@ public class Calculadora {
         }
         return a / b;
     }
+
+    /**
+     * Calcula la función exponencial de un número de punto flotante.
+     *
+     * @param a el número para calcular la función exponencial
+     * @return el resultado de la función exponencial de a
+     */
+    public double exponencial(double a) {
+        return Math.exp(a);
+    }
 }

@@ -45,6 +45,7 @@ classDiagram
         +double restar(double a, double b)
         +double multiplicar(double a, double b)
         +double dividir(double a, double b)
+        +double exponencial(double a)
     }
 
     App --> Calculadora
@@ -67,6 +68,8 @@ sequenceDiagram
     Calculadora-->>App: resultadoMultiplicacion
     App->>Calculadora: dividir(a, b)
     Calculadora-->>App: resultadoDivision
+    App->>Calculadora: exponencial(a)
+    Calculadora-->>App: resultadoExponencial
     App-->>User: mostrarResultados()
 
 ```
